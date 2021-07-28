@@ -1,0 +1,124 @@
+.job-detail-pages-container {
+	height: 100vh;
+	overflow: hidden;
+}
+
+.job-detail-wrapper {
+	background-color: #fafafa;
+	padding: 16px;
+  height: calc(100vh - 92px);
+
+  .back-button {
+    color: #427fbe;
+    font-weight: bold;
+    margin: 16px 0px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .job-detail-content-wrapper {
+    border: 4px solid #f7f7f7;
+    background-color: #ffffff;
+    padding: 16px;
+    height: calc(100vh - 184px);
+    overflow: auto;
+
+    .job-title {
+      border-bottom: 1px solid #eaeaea;
+
+      .job-type-and-location {
+        display: block;
+        color: #9e9e9e;
+        font-size: 12px;
+      }
+
+      .title-text {
+        margin: 0px 0px 20px 0px;
+        color: #354953;
+      }
+    }
+
+    .job-content {
+      display: flex;
+      justify-content: space-between;
+
+      .left-side {
+        width: 65%;
+      }
+
+      .right-side {
+        width: 30%;
+
+        .company-info {
+          background-color: #e8e8e8;
+          padding: 8px;
+          border-radius: 4px;
+          margin-top: 8px;
+
+          .company-name {
+            display: block;
+            color: #545454;
+            font-weight: bold;
+            background-color: #fafafa;
+            width: calc(100% - 8px);
+            padding: 4px;
+            border-radius: 4px 4px 0px 0px;
+          }
+
+          .image-wrapper {
+            width: 100%;
+            background-color: white;
+            margin-top: 2px;
+            display: grid;
+          }
+
+          img {
+            width: 80%;
+            margin: auto;
+          }
+
+          .company-link {
+            background-color: white;
+            width: calc(100% - 8px);
+            display: block;
+            padding: 4px;
+            border-radius: 0px 0px 4px 4px;
+            color: #427fbe;
+          }
+        }
+
+        .how-to-apply-section {
+          margin-top: 20px;
+          background: #ebeddf;
+          width: calc(100% - 16px);
+          padding: 8px;
+
+          .how-to-apply-text {
+            background-color: #fffef1;
+            width: calc(100% - 8px);
+            display: block;
+            padding: 4px;
+            border-radius: 4px 4px 0px 0px;
+            font-weight: bold;
+          }
+
+          .how-to-apply-content {
+            background-color: #fffef1;
+            padding: 12px;
+            margin-top: 4px;
+            border-radius: 0px 0px 4px 4px;
+
+            p {
+              margin: 0px;
+              color: #9e9b93;
+
+              a {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

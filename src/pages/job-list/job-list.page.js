@@ -59,7 +59,7 @@ function JobListPage() {
             jobList.map((item) => 
             <div className="job-card" key={ item.id }>
               <div className="left-section">
-                <h3 className="job-title">{ item.title }</h3>
+                <a className="job-title" href={ '/job-detail/' + item.id }>{ item.title }</a>
                 <span className="company-name">{ item.company } - <b className="job-type">{ item.type }</b></span>
               </div>
 

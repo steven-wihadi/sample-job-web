@@ -15,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path='/'><LoginPage /></Route>
           <Route exact path='/job-list'><JobListPage /></Route>
-          <Route exact path='/job-detail'><JobDetailPage /></Route>
+          <Route exact path='/job-detail/:id'><JobDetailPage /></Route>
         </Switch>
       </div>
     </Router>

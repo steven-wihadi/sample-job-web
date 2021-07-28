@@ -30,9 +30,12 @@
 
     .left-section {
       .job-title {
+        display: block;
+        font-weight: bold;
         color: #5c94c4;
         margin: 0px 0px 2px 0px;
         font-size: 18px;
+        text-decoration: none;
       }
   
       .company-name {
