@@ -1,0 +1,52 @@
+.job-list-toolbar-component {
+	width: calc(100vw - 16px);
+	background-color: #fafafa;
+	position: sticky;
+	top: 0px;
+	display: flex;
+	z-index: 2;
+	padding: 4px 8px;
+  height: 74px;
+
+  .toolbar-label {
+    display: block;
+    font-weight: bold;
+    color: #585858;
+
+    &.inline { display: inline !important; }
+  }
+
+  .toolbar-input {
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    height: 24px;
+    margin-top: 4px;
+  }
+
+  .job-desc-section {
+    width: 30%;
+    margin-right: 30px;
+    align-self: end;
+  }
+
+  .job-location-section {
+    width: 30%;
+    margin-right: 30px;
+    align-self: end;
+  }
+
+  .fulltime-section {
+    align-self: end;
+    margin-bottom: 6px;
+    margin-right: 30px;
+  }
+
+  button {
+    align-self: end;
+    border: none;
+    background-color: #9badb9;
+    padding: 8px 32px;
+    color: white;
+    border-radius: 4px;
+  }
+}

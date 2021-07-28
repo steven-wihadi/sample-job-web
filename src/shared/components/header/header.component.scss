@@ -1,0 +1,21 @@
+.header-component-container {
+	width: calc(100vw - 8px);
+	height: 60px;
+	position: sticky;
+	top: 0px;
+	display: grid;
+	background-color: #427fbe;
+	z-index: 2;
+	padding: 0px 4px;
+
+  .header-title {
+    margin: auto 0px;
+    color: white;
+    font-size: 30px;
+  }
+
+  .title-subtext {
+    font-weight: normal;
+    margin-left: 0px;
+  }
+}
