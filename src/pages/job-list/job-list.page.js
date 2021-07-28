@@ -1,40 +1,75 @@
 import './job-list.page.scss';
 import Header from '../../shared/components/header/header.component';
 import JobListToolbar from './component/job-list-toolbar/job-list-toolbar.component';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { JobListService } from './job-list.service';
+
+let isMaxData = false;
+let totalData = 0;
+let page = 1;
 
 function JobListPage() {
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    fetchData('', '', '', '');
+  }, []);
 
-  // const fetchData = () => {
-  //   fetch('http://dev3.dansmultipro.co.id/api/recruitment/positions.json?page=1').then((res) => {
-  //     console.log('==res: ', res);
-  //   });
-  // }
+  const [jobList, setJobList] = useState([]);
+
+  const fetchData = (description, location, isFulltime, procedure) => {
+    JobListService.useCase.getJoblist(description, location, isFulltime, page).then((res) => {
+      if (res.status === 200) {
+        const temp = [];
+        res.data.forEach((item) => {
+          if (item !== null) { temp.push(item); }
+        });
+
+        if (procedure === 'reset-list') { setJobList([...temp]); }
+        else { setJobList([...jobList, ...temp]); }
+
+        totalData = temp.length;
+        if (totalData < 10) { isMaxData = true; }
+        else { isMaxData = (totalData === 18) ? true : false; }
+      }
+    });
+  }
+
+  function onScroll(e) {
+    if (e.target.scrollTop === e.target.scrollTopMax && !isMaxData) {
+      page += 1;
+      fetchData('', '', '', '');
+    }
+  };
+
+  function onClickSearch(e) {
+    page = 1;
+    fetchData(e.desc, e.loc, (e.fullTime === false) ? '' : 'true', 'reset-list');
+  }
   
   return (
     <div className="job-list-pages-container">
       <Header />
-      <JobListToolbar />
+      <JobListToolbar onClickSearch={ onClickSearch } />
       
       <div className="job-list-content-wrapper">
-        <div className="job-list">
+        <div className="job-list" onScroll={onScroll}>
           <h2 className="job-list-content-title">Job List</h2>
 
-          <div className="job-card">
-            <div className="left-section">
-              <h3 className="job-title">Data Enginer</h3>
-              <span className="company-name">Trade Republic - <b className="job-type">Full Time</b></span>
-            </div>
+          { jobList &&
+            jobList.map((item) => 
+            <div className="job-card" key={ item.id }>
+              <div className="left-section">
+                <h3 className="job-title">{ item.title }</h3>
+                <span className="company-name">{ item.company } - <b className="job-type">{ item.type }</b></span>
+              </div>
 
-            <div className="right-section">
-              <span className="job-country">Berlin</span>
-              <span className="job-published">1 day ago</span>
+              <div className="right-section">
+                <span className="job-country">{ item.location }</span>
+                {/* <span className="job-published">1 day ago</span> */}
+              </div>
             </div>
-          </div>
+            )
+          }
 
         </div>
       </div>
